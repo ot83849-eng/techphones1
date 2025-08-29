@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="صفحة اتصل بنا – موقع الهواتف">
+    <title>اتصل بنا – موقع الهواتف</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {font-family: 'Cairo', sans-serif; margin:0; padding:0; background:#f9f9f9; color:#333;}
+        header, footer {background:#222; color:#fff; padding:15px; text-align:center;}
+        .container {width:90%; max-width:800px; margin:30px auto; background:#fff; padding:20px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+        h2 {text-align:center; margin-bottom:20px;}
+        form {display:flex; flex-direction:column; gap:15px;}
+        input, textarea {padding:12px; border:1px solid #ccc; border-radius:8px; font-size:15px; width:100%;}
+        button {padding:12px; background:#007bff; color:#fff; border:none; border-radius:8px; cursor:pointer; font-size:16px;}
+        button:hover {background:#0056b3;}
+        .social {margin-top:30px; text-align:center;}
+        .social a {margin:0 10px; text-decoration:none; font-size:18px; color:#007bff;}
+        footer p {margin:0;}
+    </style>
+</head>
+<body>
+<header>
+    <h1>موقع الهواتف</h1>
+</header>
+
+<div class="container">
+    <h2>📩 اتصل بنا</h2>
+    <form action="#" method="post">
+        <input type="text" name="name" placeholder="الاسم" required>
+        <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+        <textarea name="message" rows="6" placeholder="اكتب رسالتك هنا..." required></textarea>
+        <button type="submit">إرسال</button>
+    </form>
+
+    <div class="social">
+        <h3>تابعنا على:</h3>
+        <a href="#">فيسبوك</a>
+        <a href="#">تويتر</a>
+        <a href="#">انستكرام</a>
+        <a href="#">تيك توك</a>
+    </div>
+</div>
+
+<footer>
+    <p>© 2025 موقع الهواتف – جميع الحقوق محفوظة</p>
+</footer>
+</body>
+</html>

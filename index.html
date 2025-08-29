@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <meta charset="utf-8" />
+    <title>TechPhones — موقع مراجعات ومقارنات هواتف</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="موقع عربي لمراجعات الهواتف، المقارنات، أفضل التطبيقات، وحلول مشاكل الجوال." />
+    <meta name="keywords" content="هواتف, مراجعات, مقارنات, تطبيقات, أندرويد, آيفون" />
+    <meta name="author" content="TechPhones" />
+    <meta property="og:title" content="TechPhones — موقع مراجعات ومقارنات هواتف" />
+    <meta property="og:description" content="مراجعات، مقارنات، تطبيقات، وحلول مشاكل الهواتف" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ar_AR" />
+    <meta property="og:image" content="/assets/og-image.jpg" />
+    <link rel="icon" href="/assets/favicon.ico" />
+
+    <!-- خطوط عربية مريحة للقراءة -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ====== Reset بسيط و متغيرات ====== */
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { height: 100%; }
+        body { margin: 0; font-family: 'Tajawal', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color: #101828; background:#f7f8fa; }
+        img { max-width: 100%; display: block; }
+        a { color: inherit; text-decoration: none; }
+        :root {
+            --bg: #f7f8fa;
+            --card: #ffffff;
+            --text: #101828;
+            --muted: #667085;
+            --primary: #2563eb; /* أزرق أنيق */
+            --primary-600:#1d4ed8;
+            --ring: rgba(37, 99, 235, .15);
+            --radius: 16px;
+            --shadow: 0 10px 20px rgba(16, 24, 40, .06);
+            --shadow-sm: 0 4px 10px rgba(16, 24, 40, .06);
+            --container: 1200px;
+        }
+
+        /* ====== أدوات عامة ====== */
+        .container { max-width: var(--container); margin-inline: auto; padding: 0 16px; }
+        .btn { display: inline-flex; align-items: center; gap:8px; padding: 10px 16px; border-radius: 999px; background: var(--primary); color: #fff; font-weight:700; box-shadow: var(--shadow-sm); transition: .2s; }
+        .btn:hover{ background: var(--primary-600); transform: translateY(-1px); }
+        .btn.outline{ background:#fff; color: var(--primary); border:1px solid var(--primary); }
+
+        .chip{ display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; background:#eef2ff; color:#3730a3; font-weight:600; font-size:14px; }
+        .muted { color: var(--muted); }
+        .badge { font-size: 12px; padding: 4px 8px; border-radius: 8px; background: #e2e8f0; color:#0f172a; }
+
+        /* ====== رأس الصفحة ====== */
+        header { position: sticky; top:0; z-index: 50; background: rgba(255,255,255,.7); backdrop-filter: blur(10px); border-bottom:1px solid #eef2f7; }
+        .nav { display:flex; align-items:center; justify-content:space-between; height:64px; }
+        .brand{ display:flex; align-items:center; gap:10px; font-weight:800; }
+        .brand .logo{ width:34px; height:34px; border-radius:10px; background:linear-gradient(135deg, #1d4ed8, #38bdf8); box-shadow: var(--shadow-sm); }
+        nav ul{ display:flex; gap: 16px; list-style:none; margin:0; padding:0; }
+        nav a{ padding: 8px 12px; border-radius: 10px; }
+        nav a:hover{ background:#eef2ff; }
+        .search{ display:flex; align-items:center; gap:8px; background:#fff; border:1px solid #e5e7eb; padding:8px 12px; border-radius: 12px; box-shadow: var(--shadow-sm); }
+        .search input{ border:0; outline:0; min-width:220px; font-size:14px; }
+        .menu-btn{ display:none; }
+
+        /* ====== قسم مميز أعلى الصفحة ====== */
+        .hero { padding: 28px 0 10px; }
+        .feature{ display:grid; grid-template-columns: 1.1fr .9fr; gap:20px; }
+        .feature .card{ background:var(--card); border-radius: var(--radius); overflow:hidden; box-shadow: var(--shadow); display:grid; grid-template-columns: 1.2fr 1fr; }
+        .feature .media{ position:relative; min-height:260px; }
+        .feature .media img{ width:100%; height:100%; object-fit:cover; }
+        .feature .body{ padding:20px; display:flex; flex-direction:column; gap:12px; }
+        .feature h1{ margin:0; font-size: clamp(22px, 2.2vw, 32px); line-height:1.3; }
+
+        .side-cards{ display:grid; gap:20px; }
+        .side-cards .card{ background:var(--card); border-radius: var(--radius); overflow:hidden; box-shadow: var(--shadow); display:grid; grid-template-columns: .9fr 1.1fr; }
+        .side-cards .body{ padding:16px; display:flex; flex-direction:column; gap:8px; }
+
+        /* ====== شبكة المقالات ====== */
+        .section { padding: 24px 0; }
+        .section h2{ margin:0 0 12px; font-size: clamp(18px, 2vw, 24px); }
+        .grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+        .card{ background: var(--card); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+        .card .thumb{ aspect-ratio: 16/9; background:#e2e8f0; }
+        .card .content{ padding:14px; display:flex; flex-direction:column; gap:8px; }
+        .post{ grid-column: span 4; }
+
+        /* ====== صندوق إعلان تجريبي ====== */
+        .ad-slot{ display:flex; align-items:center; justify-content:center; background:#fff; border:1px dashed #cbd5e1; color:#64748b; border-radius: var(--radius); padding:16px; text-align:center; box-shadow: var(--shadow-sm); min-height: 100px; }
+
+        /* ====== تذييل ====== */
+        footer{ margin-top: 24px; padding: 24px 0; border-top:1px solid #e5e7eb; color: var(--muted); }
+
+        /* ====== استجابة الشاشات ====== */
+    </style>
+
+    <!-- JSON-LD لنتائج منسّقة (قائمة مقالات) -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": [
+                {"@type":"ListItem","position":1,"url":"/posts/iphone-15-vs-s24.html"},
+                {"@type":"ListItem","position":2,"url":"/posts/best-budget-phones-2025.html"},
+                {"@type":"ListItem","position":3,"url":"/posts/best-camera-apps-android.html"}
+            ]
+        }
+    </script>
+</head>
+<body>
+<!-- ====== Header ====== -->
+<header>
+
+
+    <div class="container nav">
+        <a href="#" class="brand" aria-label="العودة للرئيسية">
+            <span class="logo" aria-hidden="true"></span>
+            <span>TechPhones</span>
+            <span class="badge">تجريبي</span>
+        </a>
+        <nav>
+            <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="primaryNav">القائمة ☰</button>
+            <ul id="primaryNav" aria-label="القائمة الرئيسية">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="comparisons.html">مقارنات</a></li>
+                <li><a href="post.html">تطبيقات</a></li>
+                <li><a href="post.html">حلول مشاكل</a></li>
+                <li><a href="contact.html">من نحن</a></li>
+                <li><a href="about.html">تواصل معنا</a></li>
+            </ul>
+        </nav>
+
+        <form class="search" role="search" aria-label="بحث" onsubmit="return handleSearch(event)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 21l-3.5-3.5" stroke="#64748b" stroke-width="2" stroke-linecap="round"/><circle cx="10.5" cy="10.5" r="7" stroke="#64748b" stroke-width="2"/></svg>
+            <input id="q" type="search" placeholder="ابحث عن هاتف أو مقال" />
+        </form>
+    </div>
+</header>
+
+<!-- ====== Hero / Featured ====== -->
+<section class="hero container" aria-labelledby="featured-heading">
+    <h2 id="featured-heading" class="visually-hidden" style="position:absolute;left:-9999px;">المحتوى المميز</h2>
+    <div class="feature">
+        <!-- بطاقة مميزة كبيرة -->
+        <article class="card" itemscope itemtype="https://schema.org/Article">
+            <div class="media">
+                <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?q=80&w=1200&auto=format&fit=crop" alt="صورة هاتف حديث" loading="lazy" />
+            </div>
+            <div class="body">
+                <div class="chip" itemprop="articleSection">مقارنة</div>
+                <h1 itemprop="headline"><a href="#">مقارنة شاملة: iPhone 15 مقابل Samsung S24 — من الأفضل لك؟</a></h1>
+                <p class="muted" itemprop="description">نقارن الأداء، الكاميرا، البطارية، والسعر مع نصائح عملية لاختيار الهاتف الأنسب في 2025.</p>
+                <div style="display:flex; gap:12px; align-items:center;">
+                    <span class="badge">10 دقائق قراءة</span>
+                    <span class="muted">•</span>
+                    <time class="muted" itemprop="datePublished" datetime="2025-02-10">10 فبراير 2025</time>
+                </div>
+                <div style="margin-top:auto; display:flex; gap:12px; flex-wrap:wrap;">
+                    <a class="btn" href="#">اقرأ الآن</a>
+                    <a class="btn outline" href="#comparisons">مقارنات أخرى</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- بطاقات جانبية -->
+        <div class="side-cards">
+            <article class="card">
+                <img class="thumb" src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=800&auto=format&fit=crop" alt="هواتف اقتصادية" loading="lazy">
+                <div class="body">
+                    <div class="chip">قائمة الأفضل</div>
+                    <a href="#"><h3 style="margin:0">أفضل هواتف اقتصادية تحت 200$ في 2025</h3></a>
+                    <p class="muted">قائمة مختصرة مع المزايا والعيوب لكل خيار.</p>
+                </div>
+            </article>
+            <article class="card">
+                <img class="thumb" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=800&auto=format&fit=crop" alt="تطبيقات كاميرا" loading="lazy">
+                <div class="body">
+                    <div class="chip">تطبيقات</div>
+                    <a href="#"><h3 style="margin:0">أفضل تطبيقات الكاميرا للأندرويد لتحسين الصور</h3></a>
+                    <p class="muted">بدائل قوية للتطبيق الافتراضي مع مزايا احترافية.</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ====== Ad Slot أعلى الوسط ====== -->
+<div class="container section">
+    <div class="ad-slot" aria-label="مساحة إعلان">
+        <!-- ضع كود AdSense هنا لاحقًا -->
+        مساحة إعلان 728×90 (تجريبي)
+    </div>
+</div>
+
+<!-- ====== أحدث المقالات ====== -->
+<section class="container section" id="reviews" aria-labelledby="latest-heading">
+    <h2 id="latest-heading">أحدث المراجعات</h2>
+    <div class="grid">
+        <!-- بطاقة مقال متكررة -->
+        <article class="card post" itemscope itemtype="https://schema.org/Article">
+            <img class="thumb" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1200&auto=format&fit=crop" alt="مراجعة هاتف" loading="lazy">
+            <div class="content">
+                <a href="#"><h3 itemprop="headline" style="margin:0">مراجعة Redmi Note 13 Pro — قيمة مقابل السعر؟</h3></a>
+                <p class="muted" itemprop="description">اختبرنا الشاشة، الأداء، الكاميرا، والبطارية مع نقاط القوة والضعف.</p>
+                <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                    <span class="badge">مراجعة</span>
+                    <time class="muted" itemprop="datePublished" datetime="2025-03-01">1 مارس 2025</time>
+                </div>
+            </div>
+        </article>
+
+        <article class="card post">
+            <img class="thumb" src="https://www.mobilefoni.com/wp-content/uploads/2025/05/%D8%A7%D9%84%D9%81%D8%B1%D9%82-%D8%A8%D9%8A%D9%86-Samsung-a35-%D9%88-Samsung-a55.webp" alt="مقارنة هواتف" loading="lazy">
+            <div class="content">
+                <a href="#"><h3 style="margin:0">Galaxy A55 أم A35؟ أيهما تختار ولماذا</h3></a>
+                <p class="muted">نقارن الكاميرا، الأداء، السعر، وتجربة الاستخدام اليومية.</p>
+                <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                    <span class="badge">مقارنة</span>
+                    <time class="muted" datetime="2025-02-20">20 فبراير 2025</time>
+                </div>
+            </div>
+        </article>
+
+        <article class="card post">
+            <img class="thumb" src="https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1200&auto=format&fit=crop" alt="تطبيقات إنتاجية" loading="lazy">
+            <div class="content">
+                <a href="#"><h3 style="margin:0">5 تطبيقات إنتاجية مجانية لهاتفك في 2025</h3></a>
+                <p class="muted">بدائل خفيفة وسريعة تساعدك على التنظيم والتركيز.</p>
+                <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                    <span class="badge">تطبيقات</span>
+                    <time class="muted" datetime="2025-01-15">15 يناير 2025</time>
+                </div>
+            </div>
+        </article>
+
+        <article class="card post">
+            <img class="thumb" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="حل مشاكل الهاتف" loading="lazy">
+            <div class="content">
+                <a href="#"><h3 style="margin:0">حل مشكلة استنزاف البطارية في الأندرويد بخطوات بسيطة</h3></a>
+                <p class="muted">إعدادات عملية تقلل الاستهلاك وتحسن وقت الشاشة.</p>
+                <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                    <span class="badge">حلول مشاكل</span>
+                    <time class="muted" datetime="2024-12-05">5 ديسمبر 2024</time>
+                </div>
+            </div>
+        </article>
+
+        <article class="card post">
+            <img class="thumb" src="https://images.unsplash.com/photo-1557180295-76eee20ae8aa?q=80&w=1200&auto=format&fit=crop" alt="كاميرا الهاتف" loading="lazy">
+            <div class="content">
+                <a href="#"><h3 style="margin:0">أفضل هواتف بكاميرا قوية للتصوير الليلي</h3></a>
+                <p class="muted">قائمة مختارة مع أمثلة صور ونصائح للتصوير.</p>
+                <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                    <span class="badge">قائمة الأفضل</span>
+                    <time class="muted" datetime="2025-04-12">12 أبريل 2025</time>
+                </div>
+            </div>
+        </article>
+
+        <article class="card post">
+            <img class="thumb" src="https://img.utdstc.com/screen/0c2/7fe/0c27fe82165883fa16cfcb2e768b5541e30fcf2344b26cb256916f9fc6e0b8e0:400" alt="العاب الهاتف" loading="lazy">
+            <div class="content">
+                <a href="#"><h3 style="margin:0">أفضل ألعاب خفيفة تعمل بدون إنترنت</h3></a>
+                <p class="muted">اختيارات ممتعة تشتغل على أغلب الأجهزة الضعيفة.</p>
+                <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                    <span class="badge">ألعاب</span>
+                    <time class="muted" datetime="2025-05-22">22 مايو 2025</time>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<!-- ====== Ad Slot داخل الوسط ====== -->
+<div class="container section">
+    <div class="ad-slot" aria-label="مساحة إعلان">
+        مساحة إعلان 336×280 (تجريبي)
+    </div>
+</div>
+
+<!-- ====== أقسام أخرى ====== -->
+<section class="container section" id="comparisons">
+    <h2>المقارنات</h2>
+    <p class="muted">قارن بين أشهر الهواتف لاختيار الأنسب.</p>
+</section>
+
+<section class="container section" id="apps">
+    <h2>أفضل التطبيقات</h2>
+    <p class="muted">قوائم محدثة لأفضل التطبيقات المجانية والمدفوعة.</p>
+</section>
+
+<section class="container section" id="tips">
+    <h2>حلول المشاكل</h2>
+    <p class="muted">خطوات عملية لإصلاح أعطال الهاتف الشائعة.</p>
+</section>
+
+<!-- ====== Newsletter (اختياري) ====== -->
+<section class="container section" aria-labelledby="newsletter-heading">
+    <h2 id="newsletter-heading">اشترك ليصلك الجديد</h2>
+    <form class="card" onsubmit="event.preventDefault(); alert('تم الاشتراك تجريبياً');" style="padding:16px; display:grid; gap:12px;">
+        <label for="email" style="font-weight:700;">بريدك الإلكتروني</label>
+        <input id="email" type="email" placeholder="example@mail.com" required style="padding:12px;border-radius:12px;border:1px solid #e5e7eb;outline:none;box-shadow:var(--shadow-sm)" />
+        <button class="btn" type="submit">اشتراك</button>
+    </form>
+</section>
+
+<!-- ====== Footer ====== -->
+<footer>
+    <div class="container" style="display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;">
+        <div>© <span id="year"></span> TechPhones — جميع الحقوق محفوظة</div>
+        <div style="display:flex; gap:12px;">
+            <a class="muted" href="#">سياسة الخصوصية</a>
+            <a class="muted" href="#">اتصل بنا</a>
+        </div>
+    </div>
+</footer>
+
+<!-- ====== سكريبتات صغيرة ====== -->
+<script>
+    // سنة ديناميكية في الفوتر
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // قائمة الجوال
+    const menuBtn = document.getElementById('menuBtn');
+    const nav = document.getElementById('primaryNav');
+    if(menuBtn){
+        menuBtn.addEventListener('click', () => {
+            const open = nav.classList.toggle('open');
+            menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+    }
+
+    // بحث بسيط (تجريبي): يوجه لنتائج جوجل الخاصة بالموقع لاحقًا
+    function handleSearch(e){
+        e.preventDefault();
+        const q = document.getElementById('q').value.trim();
+        if(!q) return false;
+        // مؤقتًا: بحث في جوجل بكلمة + site: لاحقًا استبدله بصفحة نتائج داخلية
+        window.location.href = `https://www.google.com/search?q=${encodeURIComponent(q)}+site:${location.hostname}`;
+        return false;
+    }
+</script>
+</body>
+</html>

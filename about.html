@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TechPhones — موقع مراجعات ومقارنات هواتف</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="موقع عربي لمراجعات الهواتف، المقارنات، أفضل التطبيقات، وحلول مشاكل الجوال." />
+    <meta name="keywords" content="هواتف, مراجعات, مقارنات, تطبيقات, أندرويد, آيفون" />
+    <meta name="author" content="TechPhones" />
+    <meta property="og:title" content="TechPhones — موقع مراجعات ومقارنات هواتف" />
+    <meta property="og:description" content="مراجعات، مقارنات، تطبيقات، وحلول مشاكل الهواتف" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ar_AR" />
+    <meta property="og:image" content="/assets/og-image.jpg" />
+    <link rel="icon" href="/assets/favicon.ico" />
+
+    <!-- خطوط عربية مريحة للقراءة -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ====== Reset بسيط و متغيرات ====== */
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { height: 100%; }
+        body { margin: 0; font-family: 'Tajawal', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color: #101828; background:#f7f8fa; }
+        img { max-width: 100%; display: block; }
+        a { color: inherit; text-decoration: none; }
+        :root {
+            --bg: #f7f8fa;
+            --card: #ffffff;
+            --text: #101828;
+            --muted: #667085;
+            --primary: #2563eb; /* أزرق أنيق */
+            --primary-600:#1d4ed8;
+            --ring: rgba(37, 99, 235, .15);
+            --radius: 16px;
+            --shadow: 0 10px 20px rgba(16, 24, 40, .06);
+            --shadow-sm: 0 4px 10px rgba(16, 24, 40, .06);
+            --container: 1200px;
+        }
+
+        /* ====== أدوات عامة ====== */
+        .container { max-width: var(--container); margin-inline: auto; padding: 0 16px; }
+        .btn { display: inline-flex; align-items: center; gap:8px; padding: 10px 16px; border-radius: 999px; background: var(--primary); color: #fff; font-weight:700; box-shadow: var(--shadow-sm); transition: .2s; }
+        .btn:hover{ background: var(--primary-600); transform: translateY(-1px); }
+        .btn.outline{ background:#fff; color: var(--primary); border:1px solid var(--primary); }
+
+        .chip{ display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; background:#eef2ff; color:#3730a3; font-weight:600; font-size:14px; }
+        .muted { color: var(--muted); }
+        .badge { font-size: 12px; padding: 4px 8px; border-radius: 8px; background: #e2e8f0; color:#0f172a; }
+
+        /* ====== رأس الصفحة ====== */
+        header { position: sticky; top:0; z-index: 50; background: rgba(255,255,255,.7); backdrop-filter: blur(10px); border-bottom:1px solid #eef2f7; }
+        .nav { display:flex; align-items:center; justify-content:space-between; height:64px; }
+        .brand{ display:flex; align-items:center; gap:10px; font-weight:800; }
+        .brand .logo{ width:34px; height:34px; border-radius:10px; background:linear-gradient(135deg, #1d4ed8, #38bdf8); box-shadow: var(--shadow-sm); }
+        nav ul{ display:flex; gap: 16px; list-style:none; margin:0; padding:0; }
+        nav a{ padding: 8px 12px; border-radius: 10px; }
+        nav a:hover{ background:#eef2ff; }
+        .search{ display:flex; align-items:center; gap:8px; background:#fff; border:1px solid #e5e7eb; padding:8px 12px; border-radius: 12px; box-shadow: var(--shadow-sm); }
+        .search input{ border:0; outline:0; min-width:220px; font-size:14px; }
+        .menu-btn{ display:none; }
+
+        /* ====== قسم مميز أعلى الصفحة ====== */
+        .hero { padding: 28px 0 10px; }
+        .feature{ display:grid; grid-template-columns: 1.1fr .9fr; gap:20px; }
+        .feature .card{ background:var(--card); border-radius: var(--radius); overflow:hidden; box-shadow: var(--shadow); display:grid; grid-template-columns: 1.2fr 1fr; }
+        .feature .media{ position:relative; min-height:260px; }
+        .feature .media img{ width:100%; height:100%; object-fit:cover; }
+        .feature .body{ padding:20px; display:flex; flex-direction:column; gap:12px; }
+        .feature h1{ margin:0; font-size: clamp(22px, 2.2vw, 32px); line-height:1.3; }
+
+        .side-cards{ display:grid; gap:20px; }
+        .side-cards .card{ background:var(--card); border-radius: var(--radius); overflow:hidden; box-shadow: var(--shadow); display:grid; grid-template-columns: .9fr 1.1fr; }
+        .side-cards .body{ padding:16px; display:flex; flex-direction:column; gap:8px; }
+
+        /* ====== شبكة المقالات ====== */
+        .section { padding: 24px 0; }
+        .section h2{ margin:0 0 12px; font-size: clamp(18px, 2vw, 24px); }
+        .grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+        .card{ background: var(--card); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+        .card .thumb{ aspect-ratio: 16/9; background:#e2e8f0; }
+        .card .content{ padding:14px; display:flex; flex-direction:column; gap:8px; }
+        .post{ grid-column: span 4; }
+
+        /* ====== صندوق إعلان تجريبي ====== */
+        .ad-slot{ display:flex; align-items:center; justify-content:center; background:#fff; border:1px dashed #cbd5e1; color:#64748b; border-radius: var(--radius); padding:16px; text-align:center; box-shadow: var(--shadow-sm); min-height: 100px; }
+
+        /* ====== تذييل ====== */
+        footer{ margin-top: 24px; padding: 24px 0; border-top:1px solid #e5e7eb; color: var(--muted); }
+
+        /* ====== استجابة الشاشات ====== */
+    </style>
+
+    <!-- JSON-LD لنتائج منسّقة (قائمة مقالات) -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": [
+                {"@type":"ListItem","position":1,"url":"/posts/iphone-15-vs-s24.html"},
+                {"@type":"ListItem","position":2,"url":"/posts/best-budget-phones-2025.html"},
+                {"@type":"ListItem","position":3,"url":"/posts/best-camera-apps-android.html"}
+            ]
+        }
+    </script>
+</head>
+<body>
+
+
+
+<header >
+
+
+
+
+    <div class="container nav">
+        <a href="#" class="brand" aria-label="العودة للرئيسية">
+            <span class="logo" aria-hidden="true"></span>
+            <span>TechPhones</span>
+            <span class="badge">تجريبي</span>
+        </a>
+        <nav>
+            <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="primaryNav">القائمة ☰</button>
+            <ul id="primaryNav" aria-label="القائمة الرئيسية">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="comparisons.html">مقارنات</a></li>
+                <li><a href="post.html">تطبيقات</a></li>
+                <li><a href="category.html">حلول مشاكل</a></li>
+                <li><a href="about.html">من نحن</a></li>
+                <li><a href="contact.html">تواصل معنا</a></li>
+            </ul>
+        </nav>
+
+        <form class="search" role="search" aria-label="بحث" onsubmit="return handleSearch(event)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 21l-3.5-3.5" stroke="#64748b" stroke-width="2" stroke-linecap="round"/><circle cx="10.5" cy="10.5" r="7" stroke="#64748b" stroke-width="2"/></svg>
+            <input id="q" type="search" placeholder="ابحث عن هاتف أو مقال" />
+        </form>
+    </div>
+
+
+</header>
+
+<div class="container">
+
+    <h2>ℹ️ عن الموقع</h2>
+    <p>موقع الهواتف هو منصة عربية متخصصة في عالم الهواتف الذكية، نقدم من خلالها أحدث الأخبار، المراجعات التفصيلية، المقارنات بين الأجهزة، بالإضافة إلى نصائح وحلول لمشاكل الهواتف.</p>
+
+    <div class="mission">
+        <h2>🎯 رسالتنا</h2>
+        <p>تقديم محتوى موثوق وبسيط يساعد المستخدمين على اختيار الهاتف المناسب لهم ومعرفة مزايا وعيوب كل جهاز قبل الشراء.</p>
+    </div>
+
+    <div class="vision">
+        <h2>🚀 رؤيتنا</h2>
+        <p>أن نصبح المرجع العربي الأول في عالم الهواتف الذكية والتقنية الحديثة.</p>
+    </div>
+
+    <p>سواء كنت تبحث عن مراجعة هاتف جديد، مقارنة بين جهازين، أو حلول لمشكلة في هاتفك، ستجد في موقعنا كل ما تحتاج إليه.</p>
+</div>
+
+
+
+
+<!-- ====== Ad Slot أعلى الوسط ====== -->
+<div class="container section">
+    <div class="ad-slot" aria-label="مساحة إعلان">
+        <!-- ضع كود AdSense هنا لاحقًا -->
+        مساحة إعلان 728×90 (تجريبي)
+    </div>
+</div>
+
+
+
+
+
+
+<!-- ====== Footer ====== -->
+<footer>
+    <div class="container" style="display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;">
+        <div>© <span id="year"></span> TechPhones — جميع الحقوق محفوظة</div>
+        <div style="display:flex; gap:12px;">
+            <a class="muted" href="#">سياسة الخصوصية</a>
+            <a class="muted" href="#">اتصل بنا</a>
+        </div>
+    </div>
+</footer>
+
+
+
+
+
+<!-- ====== سكريبتات صغيرة ====== -->
+<script>
+    // سنة ديناميكية في الفوتر
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // قائمة الجوال
+    const menuBtn = document.getElementById('menuBtn');
+    const nav = document.getElementById('primaryNav');
+    if(menuBtn){
+        menuBtn.addEventListener('click', () => {
+            const open = nav.classList.toggle('open');
+            menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+    }
+
+    // بحث بسيط (تجريبي): يوجه لنتائج جوجل الخاصة بالموقع لاحقًا
+    function handleSearch(e){
+        e.preventDefault();
+        const q = document.getElementById('q').value.trim();
+        if(!q) return false;
+        // مؤقتًا: بحث في جوجل بكلمة + site: لاحقًا استبدله بصفحة نتائج داخلية
+        window.location.href = `https://www.google.com/search?q=${encodeURIComponent(q)}+site:${location.hostname}`;
+        return false;
+    }
+</script>
+</body>
+</html>
