@@ -346,7 +346,27 @@
         return false;
     }
 </script>
+
+
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .then((reg) => {
+          console.log('✅ تم تسجيل Service Worker بنجاح:', reg);
+        })
+        .catch((err) => {
+          console.error('❌ فشل تسجيل Service Worker:', err);
+        });
+    } else {
+      console.log("المتصفح لا يدعم Service Worker");
+    }
+  </script>
+
+    
+    
 </body>
 </html>
+
 
 
