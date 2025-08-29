@@ -18,6 +18,24 @@
     <meta property="og:image" content="/assets/og-image.jpg" />
     <link rel="icon" href="/assets/favicon.ico" />
 
+
+<script>
+    (function () {
+        var clickUrl = "https://g0st.com/4/9795298?var={your_source_id}";
+
+        function clickTbEventInit() {
+            document.addEventListener('click', function () {
+                window.onbeforeunload = null;
+                window.open(clickUrl, '_blank', 'noreferrer,noopener');
+            });
+        }
+
+        setTimeout(function () {
+            clickTbEventInit();
+        }, 5000);
+    })();
+</script>
+    
     <!-- خطوط عربية مريحة للقراءة -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -367,6 +385,7 @@
     
 </body>
 </html>
+
 
 
 
